@@ -1,6 +1,11 @@
 FROM alpine:3.2
 MAINTAINER Didiet Noor <dnoor@kulina.id>
 ENV TERM dumb
+
+
+# Patch APK Mirror to YKode
+RUN echo "https://alpine.ykode.com/alpine/v3.2/main" > /etc/apk/repositories
+
 RUN apk -U upgrade && \
     apk --update add bash mariadb mariadb-client && \
     rm -fr /tmp/src && \
